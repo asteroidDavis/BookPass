@@ -1,7 +1,8 @@
 class Page:
 
     def __init__(self):
-        self.size = 1024
+        self.max_size = 1024
+        self.size = 0
         self.__words = []
 
     '''
@@ -11,9 +12,8 @@ class Page:
         offset: how far into the page to start fetching the page
     '''
     def read_page(self, path, offset):
-        try:
-            fid = open(file=path)
-            result = fid.read(self.size)
-        finally:
-            if fid:
-                fid.close()
+        with open(path) as fid:
+            pass
+
+    def is_empty(self):
+        return(len(self.__words) > 0)
