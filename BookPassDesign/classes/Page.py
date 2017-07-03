@@ -1,8 +1,8 @@
 class Page:
 
     def __init__(self):
-        self.max_size = 1024
-        self.size = 0
+        self.max_lines = 64
+        self.lines = 0
         self.__words = []
 
     '''
@@ -12,8 +12,12 @@ class Page:
         offset: how far into the page to start fetching the page
     '''
     def read_page(self, path, offset):
-        with open(path) as fid:
-            pass
+        # open the book for reading
+        with open(path, 'r') as fid:
+            # read the entire book into memory Todo: make this read from the offset to offset plus lines
+            lines = fid.readlines()
+            self.lines = len(lines[offset:])
+            self.__words = lines[offset:offset+self.lines]
 
     def is_empty(self):
         return(len(self.__words) > 0)
