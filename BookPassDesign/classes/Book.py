@@ -4,18 +4,20 @@ class Book:
 
     def __init__(self):
         # how many words are in this book
-        self.__word_count = 0
+        self.word_count = 0
         # what word is the book currently positioned at
-        self.__location = 0
+        self.location = 0
         # what are the important locations in the book
-        self.__bookmarks = []
+        self.bookmarks = []
         # how many bookmarks are currently in the book
-        self.__bookmark_count = 0
+        self.bookmark_count = 0
         # where is the book stored
-        self.__uri = ''
+        self.uri = ''
         # the words currently in memory
-        self.__current_page = Page()
-
+        self.current_page = Page()
+        # is the book downloaded yet
+        self.check_out = False
 
     def read_word(self):
-        self.__current_page.read(self.__uri, self.__location)
+        self.current_page.read(self.uri, self.location)
+

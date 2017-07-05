@@ -2,4 +2,4 @@
 class User:
 
     def __init__(self):
-        pass
+        self.logged_in = False
