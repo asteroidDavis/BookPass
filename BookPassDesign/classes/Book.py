@@ -15,7 +15,7 @@ class Book:
         self.__uri = ''
         # the words currently in memory
         self.__current_page = Page()
-        # todo: add a custom font for each book
+
 
     def read_word(self):
         self.__current_page.read(self.__uri, self.__location)
