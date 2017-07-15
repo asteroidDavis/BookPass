@@ -1,6 +1,5 @@
 from lettuce import step, world
-from ..classes import Reader
-from ..classes import Page
+from BookPassDesign.classes import Reader, Page
 
 
 def setup():
@@ -28,7 +27,7 @@ def step_impl(step, reader):
     """
     :type step: lettuce.core.Step
     """
-    assert(reader.current_book.current_page == a_long_book().get_page(number=2))
+    assert(reader.current_book.current_page == world.a_long_book().get_page(number=2))
 
 
 @step("a reader (?P<reader>.{1,64}) has a book")
@@ -36,7 +35,7 @@ def step_impl(step, reader):
     """
     :type step: lettuce.core.Step
     """
-    reader.current_book = a_long_book()
+    reader.current_book = world.a_long_book()
 
 
 @step("a reader (?P<reader>.{1,64}) picks up a new book")
@@ -44,7 +43,7 @@ def step_impl(step, reader):
     """
     :type step: lettuce.core.Step
     """
-    reader.current_book = a_long_book()
+    reader.current_book = world.a_long_book()
     reader.current_book.current_page = 0
 
 
@@ -65,5 +64,5 @@ def step_impl(step, reader):
     :type reader: str
     :type step: lettuce.core.Step
     """
-    reader.current_book.current_page = a_long_book().size
+    reader.current_book.current_page = world.a_long_book().size
     reader.current_book.current_page.position = reader.current_book.current_page.size+1
