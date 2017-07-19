@@ -1,4 +1,4 @@
-from BookPassDesign.classes import Book
+from BookPassDesign.classes import Book, Reader
 from lettuce import world
 
 '''
@@ -9,3 +9,8 @@ a_long_book() - return an object of the book class with hundreds of pages and fi
 def a_long_book():
     long_book = Book.Book()
     return long_book
+
+@world.absorb
+def a_reader():
+    reader = Reader.Reader()
+    return Reader
